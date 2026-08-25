@@ -200,3 +200,6 @@ Architecture du Projet
 ├── main.py              # Point d'entrée de l'application principale
 ├── src/                 # Code source de l'application principale
 └── .env                 # Variables d'environnement (connexions BDD)
+
+docker compose up --build                         
+                                                                                      
