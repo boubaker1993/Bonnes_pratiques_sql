@@ -203,5 +203,6 @@ Architecture du Projet
 
 
 ```
+```text
 docker compose up --build                         
 ```                                                                                    
