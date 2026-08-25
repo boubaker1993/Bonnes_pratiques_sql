@@ -201,6 +201,7 @@ Architecture du Projet
 ├── src/                 # Code source de l'application principale
 └── .env                 # Variables d'environnement (connexions BDD)
 ```text
+
 ```text
 docker compose up --build                         
-```text                                                                                    
+```                                                                                    
