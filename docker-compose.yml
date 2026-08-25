@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Bakar
+      POSTGRES_DB: megabase0
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d megabase0"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  charger_donnees:
+    build:
+      context: .
+      dockerfile: Dockerfile.loader
+    container_name: loader_script
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: main_app
+    env_file:
+      - .env
+    depends_on:
+      charger_donnees:
+        condition: service_completed_successfully
+
+volumes:
+  postgres_data:
