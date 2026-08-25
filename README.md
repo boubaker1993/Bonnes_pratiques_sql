@@ -202,6 +202,6 @@ Architecture du Projet
 └── .env                 # Variables d'environnement (connexions BDD)
 
 
-```text
+```
 docker compose up --build                         
 ```                                                                                    
